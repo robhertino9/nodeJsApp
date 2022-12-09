@@ -18,6 +18,7 @@
         <li><a href="/about">About</a></li>
 
         <% if(currentUser != null) { %>
+            <li><a href="/posts">Blog Posts</a></li>
             <li><a href="#">Welcome <%= currentUser.username %> !</a></li>
             <li><a href="/logout">Logout</a></li>
         
@@ -31,3 +32,15 @@
 </div>
  
 <div class="container">
+
+    <% if(error && error.length > 0) { %>
+        <div class = "alert alert-danger" role="alert">
+            <%= error %>
+        </div>
+    <%}%>
+
+    <% if(info && info.length > 0) { %>
+        <div class = "alert alert-info" role="info">
+            <%= info %>
+        </div>
+    <%}%>

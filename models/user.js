@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const bcrypt = require ('bcryptjs');
+//const bcrypt = require ('bcryptjs');
 
-const SALT_FACTOR = 10;
+//const SALT_FACTOR = 10;
 
 const userSchema = mongoose.Schema({ 
     username: {type:String, required:true},
@@ -9,6 +9,8 @@ const userSchema = mongoose.Schema({
     password: {type:String, required:true},
     entryDate: {type:Date, default:Date.now}
 });
+
+/*
 
 userSchema.pre("save", function(done){
     var user = this;
@@ -36,6 +38,8 @@ userSchema.methods.checkPassword = function(guess, done){
         });
     }
 }
+
+*/
 
 
 
