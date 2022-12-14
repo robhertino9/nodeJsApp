@@ -1,12 +1,12 @@
 var express = require("express");
 
-//var ensureAuthenticated = require("../../auth/auth").ensureAuthenticated;
+var ensureAuthenticated = require("../../auth/auth").ensureAuthenticated;
 
 var Post = require("../../models/post");
 
 var router = express.Router();
 
-//router.use(ensureAuthenticated);
+router.use(ensureAuthenticated);
 
 router.get("/", function(req, res){
 Post.find({userID:req.user._id}).exec(function(err, posts){

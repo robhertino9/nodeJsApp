@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-//const bcrypt = require ('bcryptjs');
+const bcrypt = require ('bcryptjs');
 
-//const SALT_FACTOR = 10;
+const SALT_FACTOR = 10;
 
 const userSchema = mongoose.Schema({ 
     username: {type:String, required:true},
@@ -10,7 +10,7 @@ const userSchema = mongoose.Schema({
     entryDate: {type:Date, default:Date.now}
 });
 
-/*
+
 
 userSchema.pre("save", function(done){
     var user = this;
@@ -39,24 +39,10 @@ userSchema.methods.checkPassword = function(guess, done){
     }
 }
 
-*/
+
 
 
 
 var User = mongoose.model("User", userSchema);
 
 module.exports = User;
-
-
-/*
-const blogSchema = new Schema({
-    blogs: {type:String, Required:true},
-    user: {type:Schema.Types.ObjectId, ref:'users'}
-});
-
-const Users = mongoose.model('users', userSchema, 'users');
-const Blogs = mongoose.model('blogs', blogSchema, 'blogs');
-const mySchemas = {'Users':Users, 'Tweets':Tweets};
-
-module.exports = mySchemas;
-*/

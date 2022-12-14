@@ -1,5 +1,6 @@
 var express = require("express");
 var passport = require("passport");
+var sanitize = require('mongo-sanitize');
 
 var ensureAuthenticated = require("../../auth/auth").ensureAuthenticated;
 
@@ -47,11 +48,11 @@ router.get("/", function(req, res) {
  });
 
  router.post("/signup", function(req,res,next){
-    var username = req.body.username;
-    var email = req.body.email;
-    var password = req.body.password;
-
-    User.findOne({email: email}, function(err,user){
+    var username = sanitize (req.body.username);
+    var email = sanitize (req.body.email);
+    var password = sanitize (req.body.password);
+    const onlyLettersPattern = /^[A-Za-z]+$/;
+    User.findOne({email: email}, function(err,user,callback){
         if(err){return next(err);}
         if(user){
             req.flash("Error", "Email already in use!");
